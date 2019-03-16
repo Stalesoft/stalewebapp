@@ -17,7 +17,7 @@ public class PreauthController {
 
 
 	@RequestMapping(value = "/preauth", method = RequestMethod.GET)
-	public PreauthEvaluation getPrequth(@RequestParam("repository") String codes) {
+	public PreauthEvaluation getPrequth(@RequestParam("codes") String codes) {
 		
 		log.debug("codes are " + codes);
 		
