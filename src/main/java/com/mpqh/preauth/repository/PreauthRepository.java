@@ -1,4 +1,4 @@
-package com.mpqh.preauth.Repository;
+package com.mpqh.preauth.repository;
 
 public class PreauthRepository {
 
