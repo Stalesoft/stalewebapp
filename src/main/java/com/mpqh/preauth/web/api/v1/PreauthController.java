@@ -24,9 +24,9 @@ public class PreauthController {
 		PreauthEvaluation preauthEvaluation = new PreauthEvaluation();
 		
 		Code code = new Code();
-		code.setAuthorizingSource("NURSE");
+		code.setSource("NURSE");
 		code.setCode("BZ1332");
-		code.setNeedPreauth(Boolean.TRUE);
+		code.setPreauth(Boolean.TRUE);
 		code.setNotes("Only if over 21");
 		preauthEvaluation.addCode(code);
 		
