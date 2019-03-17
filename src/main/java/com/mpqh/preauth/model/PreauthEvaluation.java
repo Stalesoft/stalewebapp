@@ -9,19 +9,16 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class PreauthEvaluation {
 	
 	
-	private List<Code> codes = new ArrayList<Code>();
+	private Iterable<Code> codes = new ArrayList<Code>();
 	
 
-	public List<Code> getCodes() {
+	public Iterable<Code> getCodes() {
 		return codes;
 	}
 
-	public void setCodes(List<Code> codes) {
+	public void setCodes(Iterable<Code> codes) {
 		this.codes = codes;
 	}
 	
-	public void addCode(Code code) {
-		codes.add(code);
-	}
 
 }
