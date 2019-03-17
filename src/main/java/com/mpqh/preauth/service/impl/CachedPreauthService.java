@@ -27,9 +27,9 @@ public class CachedPreauthService implements PreauthService {
 	
 	@Cacheable(CACHE_ID)
 	@Override
-	public Iterable<Code> getAllCodes(List<Integer> codes) {
+	public Iterable<Code> getCodes(List<String> codes) {
 		logger.debug("Grabbing codes");
-		return preauthService.getAllCodes(codes);
+		return preauthService.getCodes(codes);
 	}
 
 	@CacheEvict(allEntries = true, cacheNames = {CACHE_ID})

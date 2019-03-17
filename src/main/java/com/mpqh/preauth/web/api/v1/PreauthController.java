@@ -31,11 +31,11 @@ public class PreauthController {
 		
 		PreauthEvaluation preauthEvaluation = new PreauthEvaluation();
 		
-		ArrayList<Integer> codeList = new ArrayList<>();
-		codeList.add(1);
+		ArrayList<String> codeList = new ArrayList<>();
+		codeList.add("AB1010");
 		
 		synchronized (preauthService) {
-			preauthEvaluation.setCodes(preauthService.getAllCodes(codeList));	
+			preauthEvaluation.setCodes(preauthService.getCodes(codeList));	
 		}
 		
 		return preauthEvaluation;

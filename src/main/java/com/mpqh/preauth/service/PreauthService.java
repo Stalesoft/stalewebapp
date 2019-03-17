@@ -6,6 +6,6 @@ import com.mpqh.preauth.model.Code;
 
 public interface PreauthService {
 	
-	public Iterable<Code> getAllCodes(List<Integer> codes);
+	public Iterable<Code> getCodes(List<String> codes);
 
 }

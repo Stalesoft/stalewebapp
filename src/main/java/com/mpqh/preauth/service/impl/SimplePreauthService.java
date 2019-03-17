@@ -17,8 +17,11 @@ public class SimplePreauthService implements PreauthService {
 	CodeRespository codeRepository;
 
 	@Override
-	public Iterable<Code> getAllCodes(List<Integer> codes) {
-		return codeRepository.findAllById(codes);
+	public Iterable<Code> getCodes(List<String> codes) {
+		//return codeRepository.findAllById(codes);
+		return codeRepository.findAllByCode(codes);
+		
+		
 	}
 
 }
