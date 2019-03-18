@@ -37,4 +37,9 @@ public class CachedPreauthService implements PreauthService {
 	public void cacheEvict() {
 	    logger.debug("cache: {} evicted", CACHE_ID);
 	}
+
+	@Override
+	public void saveCodes(List<Code> codes) {
+		preauthService.saveCodes(codes);
+	}
 }
