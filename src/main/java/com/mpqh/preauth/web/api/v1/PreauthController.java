@@ -23,12 +23,12 @@ public class PreauthController {
 	private static Logger log = LoggerFactory.getLogger(PreauthController.class);
 
 	@Autowired
-	@Qualifier("cachedPreauthService")
+	@Qualifier("simplePreauthService")
 	PreauthService preauthService;
 	
 
 	@Autowired
-	@Qualifier("testCodeBuilderService")
+	@Qualifier("csvCodeBuilderService")
 	CodeBuilderService codeBuilderService;
 	
 	@RequestMapping(value = "/preauth", method = RequestMethod.GET)
