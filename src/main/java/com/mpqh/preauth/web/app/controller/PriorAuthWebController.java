@@ -15,16 +15,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.mpqh.preauth.exception.WebApplicationException;
 import com.mpqh.preauth.model.Code;
 import com.mpqh.preauth.service.CodeBuilderService;
 import com.mpqh.preauth.service.PriorAuthService;
 
 @Controller
 @RequestMapping("app/priorauth")
-public class UploadController {
+public class PriorAuthWebController {
 
-	private static Logger log = LoggerFactory.getLogger(UploadController.class);
+	private static Logger log = LoggerFactory.getLogger(PriorAuthWebController.class);
 
 	@Autowired
 	@Qualifier("csvCodeBuilderService")

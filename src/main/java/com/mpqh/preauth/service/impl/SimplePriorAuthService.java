@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import com.mpqh.preauth.model.Code;
 import com.mpqh.preauth.repository.CodeRespository;
 import com.mpqh.preauth.service.PriorAuthService;
-import com.mpqh.preauth.web.app.controller.UploadController;
+import com.mpqh.preauth.web.app.controller.PriorAuthWebController;
 
 @Service("simplePriorAuthService")
 public class SimplePriorAuthService implements PriorAuthService {
