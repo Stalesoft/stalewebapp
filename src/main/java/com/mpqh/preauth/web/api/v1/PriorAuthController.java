@@ -31,7 +31,7 @@ public class PriorAuthController {
 	CodeBuilderService codeBuilderService;
 	
 	@RequestMapping(value = "/priorauth", method = RequestMethod.GET)
-	public PriorAuthEvaluation getPreauth(@RequestParam("codes") String codes) {
+	public PriorAuthEvaluation getPriorAuth(@RequestParam("codes") String codes) {
 		
 		log.debug("codes are " + codes);
 		
