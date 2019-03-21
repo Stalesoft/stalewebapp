@@ -17,12 +17,12 @@ import com.mpqh.preauth.service.PreauthService;
 
 @RestController
 @RequestMapping("api/v1")
-public class PreauthController {
+public class PriorAuthController {
 	
-	private static Logger log = LoggerFactory.getLogger(PreauthController.class);
+	private static Logger log = LoggerFactory.getLogger(PriorAuthController.class);
 
 	@Autowired
-	@Qualifier("simplePreauthService")
+	@Qualifier("cachedPreauthService")
 	PreauthService preauthService;
 	
 
@@ -35,15 +35,15 @@ public class PreauthController {
 		
 		log.debug("codes are " + codes);
 		
-		PreauthEvaluation preauthEvaluation = new PreauthEvaluation();
+		PreauthEvaluation priorAuthEvaluation = new PreauthEvaluation();
 		
 		List<String> codeList = codeBuilderService.buildCodeList(codes);
 
 		synchronized (preauthService) {
-			preauthEvaluation.setCodes(preauthService.getCodes(codeList));	
+			priorAuthEvaluation.setCodes(preauthService.getCodes(codeList));	
 		}
 		
-		return preauthEvaluation;
+		return priorAuthEvaluation;
 		
 	}
 	
