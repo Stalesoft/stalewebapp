@@ -14,7 +14,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
 
 
-@ImportResource("classpath:preauth-application-context.xml")
+@ImportResource("classpath:priorauth-application-context.xml")
 @ComponentScan({"com.mpqh"})
 @SpringBootApplication
 @EnableCaching
