@@ -11,19 +11,19 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import com.mpqh.preauth.model.Code;
-import com.mpqh.preauth.service.PreauthService;
+import com.mpqh.preauth.service.PriorAuthService;
 //jdbc:h2:mem:testdb
-@Service("cachedPreauthService")
-public class CachedPreauthService implements PreauthService {
+@Service("cachedPriorAuthService")
+public class CachedPriorAuthService implements PriorAuthService {
 
-	Logger logger = LoggerFactory.getLogger(CachedPreauthService.class);
+	Logger logger = LoggerFactory.getLogger(CachedPriorAuthService.class);
 
 	public static final String CACHE_ID = "simple_cache";
 	public static final int CACHE_TTL = 900000;
 	  
 	@Autowired
-	@Qualifier("simplePreauthService")
-	PreauthService preauthService;
+	@Qualifier("simplePriorAuthService")
+	PriorAuthService preauthService;
 	
 	@Cacheable(CACHE_ID)
 	@Override

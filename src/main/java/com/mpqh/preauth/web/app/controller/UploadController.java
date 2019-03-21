@@ -17,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.mpqh.preauth.model.Code;
 import com.mpqh.preauth.service.CodeBuilderService;
-import com.mpqh.preauth.service.PreauthService;
+import com.mpqh.preauth.service.PriorAuthService;
 
 
 @Controller
@@ -32,8 +32,8 @@ public class UploadController {
 	CodeBuilderService codeBuilderService;
 
 	@Autowired
-	@Qualifier("cachedPreauthService")
-	PreauthService preauthService;
+	@Qualifier("cachedPriorAuthService")
+	PriorAuthService preauthService;
 	
 	@GetMapping("/home")
 	public String uploadHome(Model model) {

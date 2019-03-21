@@ -12,21 +12,21 @@ import org.springframework.stereotype.Service;
 
 import com.mpqh.preauth.model.Code;
 import com.mpqh.preauth.repository.CodeRespository;
-import com.mpqh.preauth.service.PreauthService;
+import com.mpqh.preauth.service.PriorAuthService;
 import com.mpqh.preauth.web.app.controller.UploadController;
 
-@Service("simplePreauthService")
-public class SimplePreauthService implements PreauthService {
+@Service("simplePriorAuthService")
+public class SimplePriorAuthService implements PriorAuthService {
 
 	private EntityManagerFactory entityManagerFactory;
 	
-	private static Logger log = LoggerFactory.getLogger(SimplePreauthService.class);
+	private static Logger log = LoggerFactory.getLogger(SimplePriorAuthService.class);
 	
 	@Autowired
 	CodeRespository codeRepository;
 	
 	@Autowired
-	public SimplePreauthService(EntityManagerFactory entityManagerFactory) {
+	public SimplePriorAuthService(EntityManagerFactory entityManagerFactory) {
 		this.entityManagerFactory = entityManagerFactory;
 	}
 
@@ -45,7 +45,6 @@ public class SimplePreauthService implements PreauthService {
 		
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		entityManager.getTransaction().begin();
-		//codeRepository.deleteAll();
 		codes.forEach(code -> entityManager.merge(code));
 		entityManager.getTransaction().commit();
 		entityManager.close();

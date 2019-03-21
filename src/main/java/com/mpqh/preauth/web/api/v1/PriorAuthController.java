@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mpqh.preauth.model.PriorAuthEvaluation;
 import com.mpqh.preauth.service.CodeBuilderService;
-import com.mpqh.preauth.service.PreauthService;
+import com.mpqh.preauth.service.PriorAuthService;
 
 @RestController
 @RequestMapping("api/v1")
@@ -22,8 +22,8 @@ public class PriorAuthController {
 	private static Logger log = LoggerFactory.getLogger(PriorAuthController.class);
 
 	@Autowired
-	@Qualifier("cachedPreauthService")
-	PreauthService preauthService;
+	@Qualifier("cachedPriorAuthService")
+	PriorAuthService priorAuthService;
 	
 
 	@Autowired
@@ -39,8 +39,8 @@ public class PriorAuthController {
 		
 		List<String> codeList = codeBuilderService.buildCodeList(codes);
 
-		synchronized (preauthService) {
-			priorAuthEvaluation.setCodes(preauthService.getCodes(codeList));	
+		synchronized (priorAuthService) {
+			priorAuthEvaluation.setCodes(priorAuthService.getCodes(codeList));	
 		}
 		
 		return priorAuthEvaluation;

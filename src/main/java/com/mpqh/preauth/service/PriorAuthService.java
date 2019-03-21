@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.mpqh.preauth.model.Code;
 
-public interface PreauthService {
+public interface PriorAuthService {
 	
 	public Iterable<Code> getCodes(List<String> codes);
 	public void saveCodes(List<Code> codes);
