@@ -31,7 +31,7 @@ public class PreauthController {
 	@Qualifier("csvCodeBuilderService")
 	CodeBuilderService codeBuilderService;
 	
-	@RequestMapping(value = "/preauth", method = RequestMethod.GET)
+	@RequestMapping(value = "/priorauth", method = RequestMethod.GET)
 	public PreauthEvaluation getPreauth(@RequestParam("codes") String codes) {
 		
 		log.debug("codes are " + codes);

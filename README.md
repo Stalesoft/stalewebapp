@@ -1,28 +1,33 @@
-# Staleweb Development Guide
+# mppreauth
 
 
+## User Guide
 
+**Upload Code Files** 
 
-## Spring
+	/app/preauth/home
 
-### Authentication
+### Rest Interface
 
-Currently uses Spring Security but with a non-production embedded user store.
+**Get Prior Authorizations**
 
-### Controllers
+	/api/v1/priorauth?codes=<code>
 
-The controller all should have a 'appName' embedded in all requests.
+		
 
-## DataStores
+## Development Guide
 
-### Heroku Postgres
+### H2 Database
 
-### Local Oracle
+URL
 
-## Hibernate
+	http://localhost:8080/h2-console/
 
-## Jackrabbit
+Startup Data file
 
-## Thymeleaf
+	src\main\resources\data.sql
 
+Sample Code Files for Upload
+
+	src\main\resources\prototype
 
