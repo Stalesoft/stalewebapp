@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mpqh.preauth.model.PreauthEvaluation;
+import com.mpqh.preauth.model.PriorAuthEvaluation;
 import com.mpqh.preauth.service.CodeBuilderService;
 import com.mpqh.preauth.service.PreauthService;
 
@@ -31,11 +31,11 @@ public class PriorAuthController {
 	CodeBuilderService codeBuilderService;
 	
 	@RequestMapping(value = "/priorauth", method = RequestMethod.GET)
-	public PreauthEvaluation getPreauth(@RequestParam("codes") String codes) {
+	public PriorAuthEvaluation getPreauth(@RequestParam("codes") String codes) {
 		
 		log.debug("codes are " + codes);
 		
-		PreauthEvaluation priorAuthEvaluation = new PreauthEvaluation();
+		PriorAuthEvaluation priorAuthEvaluation = new PriorAuthEvaluation();
 		
 		List<String> codeList = codeBuilderService.buildCodeList(codes);
 
