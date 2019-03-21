@@ -21,7 +21,7 @@ import com.mpqh.preauth.service.PriorAuthService;
 
 
 @Controller
-@RequestMapping("app/preauth")
+@RequestMapping("app/priorauth")
 public class UploadController {
 	
 
