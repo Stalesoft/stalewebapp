@@ -1,6 +1,7 @@
 package com.mpqh.preauth.service.impl;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.mpqh.preauth.exception.ServiceException;
 import com.mpqh.preauth.model.Code;
 import com.mpqh.preauth.service.CodeBuilderService;
 
@@ -16,32 +18,39 @@ import com.mpqh.preauth.service.CodeBuilderService;
 public class CsvCodeBuilderService implements CodeBuilderService {
 
 	@Override
-	public List<Code> buildCodes(InputStream inputStream) throws Exception {
+	public List<Code> buildCodes(InputStream inputStream) {
 		
 		List<Code> codes = new ArrayList<Code>();
 		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 		
-		while (reader.ready()) {
-			
-			String nextLine = reader.readLine();
-			List<String> nextElements = Arrays.asList(nextLine.split("\\s*,\\s*"));
-			
-			Code nextCode = new Code();
-			
-			String codeString = nextElements.get(0);
-			String preauthString = nextElements.get(1);
-			String sourceString = nextElements.get(2);
-			
-			
-			nextCode.setCode(codeString);
-			nextCode.setPreauth(preauthString.equalsIgnoreCase("y"));
-			nextCode.setSource(sourceString);
-			
-			codes.add(nextCode);
-			
-			
+		
+		try {
+			while (reader.ready()) {
+				
+				String nextLine = reader.readLine();
+				List<String> nextElements = Arrays.asList(nextLine.split("\\s*,\\s*"));
+				
+				Code nextCode = new Code();
+				
+				String codeString = nextElements.get(0);
+				String preauthString = nextElements.get(1);
+				String sourceString = nextElements.get(2);
+				
+				
+				nextCode.setCode(codeString);
+				nextCode.setPreauth(preauthString.equalsIgnoreCase("y"));
+				nextCode.setSource(sourceString);
+				
+				codes.add(nextCode);
+				
+				
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new ServiceException(1L, "Error codes request parameter");
 		}
+		
 		
 		return codes;
 	}
