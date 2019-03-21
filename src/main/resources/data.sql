@@ -1,2 +1,2 @@
-insert into code (code_id, code, preauth, source, notes)
-values (1, 'AB1010', true,'MP','Only for those under  17');
+insert into code (code, preauth, source, notes)
+values ('AB1010', true,'MP','Only for those under  17');

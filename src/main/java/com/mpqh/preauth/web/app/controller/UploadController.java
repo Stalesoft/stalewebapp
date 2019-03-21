@@ -28,7 +28,7 @@ public class UploadController {
 	private static Logger log = LoggerFactory.getLogger(UploadController.class);
 
 	@Autowired
-	@Qualifier("testCodeBuilderService")
+	@Qualifier("csvCodeBuilderService")
 	CodeBuilderService codeBuilderService;
 
 	@Autowired

@@ -12,7 +12,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import com.mpqh.preauth.model.Code;
 import com.mpqh.preauth.service.PreauthService;
-
+//jdbc:h2:mem:testdb
 @Service("cachedPreauthService")
 public class CachedPreauthService implements PreauthService {
 
@@ -41,5 +41,7 @@ public class CachedPreauthService implements PreauthService {
 	@Override
 	public void saveCodes(List<Code> codes) {
 		preauthService.saveCodes(codes);
+		cacheEvict();
 	}
+	
 }

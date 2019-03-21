@@ -19,9 +19,9 @@ public class TestCsvCodeBuilderService implements CodeBuilderService {
 		
 		Code code = new Code();
 		code.setCode("A1");
-		code.setNotes("Notes");
+		code.setNotes("Notes: + " + Math.random());
 		code.setPreauth(Boolean.TRUE);
-		code.setSource("PHY");
+		code.setSource("https://medicaidprovider.mt.gov/27#184022460-fee-schedules--physician\r\n");
 		
 		codeList.add(code);
 		
