@@ -45,11 +45,12 @@ public class PriorAuthWebController {
 
 		try {
 			
+			
 			List<Code> codes = codeBuilderService.buildCodes(uploadDocument.getInputStream());
 			priorAuthService.saveCodes(codes);
-
+			
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.printStackTrace();//TODO: Error Handling.
 			model.addAttribute("error", "Error uploading");
 		}
 
