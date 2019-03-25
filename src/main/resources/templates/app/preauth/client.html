@@ -36,48 +36,78 @@
 <link rel="stylesheet" href="/css/responsive.css" />
 <link rel="stylesheet" href="/css/priorauth-style.css" />
 
-<script src="/js/vendor/bootstrap.min.js"></script>
+
 <script src="/js/vendor/jquery-1.11.2.min.js"></script>
-<script src="/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
+
+
 </head>
 <body>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#submit_priorauth").click(function(){
+	     
+	     var codes = $('#procedure_codes').val();
+		 $("#preauth_table").empty();
+		 $("#preauth_table").append('<tr><th>Code</th><th>Prior Auth</th><th>Notes</th><th>Source</th></tr>')
+	     
+	     $.ajax({
+	    	url: "/api/v1/priorauth?codes=" + codes,
+	    	dataType: 'json',
+	    	type: 'get',
+	    	cache:false,
+	    	success: function(data){
+	    		var event_data = '';
+	    		$.each(data.codes, function(index, value){
+	    			event_data += '<tr>';
+	    			event_data += '<td>' + value.code+ '</td>';
+	    			event_data += '<td>' + value.preauth + "</td>";
+	    			event_data += '<td>' + value.notes + "</td>";
+	    			event_data += '<td>' + value.source + "</td>";
+	    			event_data += '</tr>';
+	    		});
+	    		$("#preauth_table").append(event_data);
+	    	},
+	    	error: function(d) {
+	    		alert("Error" + d);
+	    	}
+	     });
+	     
+  	});
+});
+
+
+</script>
+
 	<div>
 		<section class="container">
 			<div class="row">
-				<!-- div class="col-md-6 col-md-offset-4"-->
+				<h4>Prior Auth Procedure Codes</h4>
+			</div>
+			<div class="row">
 				<div class="">
-					 <form method="POST">
-					 	<div th:if="${param.error}">
-							<div class="alert alert-danger">Error Uploading File.</div>
-						</div>
-						<div class="form-group">
-							<label for="username">Prior Auth Server</label>: <input type="text"
-								id="prior_auth_server" name="prior_auth_server" class=""
-								autofocus="autofocus">
-						</div>
+					 	
 						<div class="">
-							<label for="procedure_codes">Enter Procedure Codes </label>: 
-							<textarea name="textarea" id="procedure_codes"></textarea>
+						
+							<textarea style="width:300px;" name="textarea" id="procedure_codes"></textarea>
 						</div>
-					   <br/>
 					   <div class="">
-					   		<input class="" type="submit" value="Get Priorauth" name="submit_priorauth" id="submit_priorauth" />
+					   		<button style="margin-left: 200px" id="submit_priorauth" value="Get Prior Auth">Get Prior Auth</button>
 						</div>
-				   </form>
+				   
 				</div>
 			</div>
 		</section>
 		<section class="container">
 			<div class="row">
+				<h4>Results</h4>
+			</div>
+			<div class="row">
+			
 				<!-- div class="col-md-6 col-md-offset-4"-->
 				<div class="">
-					<table id="preauth_table">
-					<tr>
-						<th>Code</th>
-						<th>Prior Auth</th>
-						<th>Notes</th>
-						<th>Source</th>
-					</tr>
+					<table id="preauth_table" style="width:600px;">
 					
 					
 					</table>

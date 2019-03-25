@@ -39,6 +39,14 @@ public class PriorAuthWebController {
 		// Need to list all codes
 		return "app/preauth/upload";
 	}
+	
+	@GetMapping("/client")
+	public String clientHome(Model model) {
+
+		log.debug("File Uploaded");
+		// Need to list all codes
+		return "app/preauth/client";
+	}
 
 	@PostMapping("/codes")
 	public String uploadDocument(@RequestParam("file") MultipartFile uploadDocument, Model model) throws Exception {
