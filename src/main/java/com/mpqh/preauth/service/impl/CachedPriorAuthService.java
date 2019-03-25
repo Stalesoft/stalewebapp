@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -22,6 +23,9 @@ public class CachedPriorAuthService implements PriorAuthService {
 	public static final int CACHE_TTL = 900000;
 	  
 	@Autowired
+	CacheManager cacheManager;
+	
+	@Autowired
 	@Qualifier("simplePriorAuthService")
 	PriorAuthService preauthService;
 	
@@ -37,11 +41,11 @@ public class CachedPriorAuthService implements PriorAuthService {
 	public void cacheEvict() {
 	    logger.debug("cache: {} evicted", CACHE_ID);
 	}
-
+	
 	@Override
 	public void saveCodes(List<Code> codes) {
 		preauthService.saveCodes(codes);
-		cacheEvict();
+		cacheManager.getCache(CACHE_ID).clear();
 	}
 	
 }
