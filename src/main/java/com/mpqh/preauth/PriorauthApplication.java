@@ -19,12 +19,12 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableCaching
 @EnableScheduling
-public class PreauthApplication {
+public class PriorauthApplication {
 
-  Logger logger = LoggerFactory.getLogger(PreauthApplication.class);
+  Logger logger = LoggerFactory.getLogger(PriorauthApplication.class);
 
   public static void main(String[] args) {
-    SpringApplication.run(PreauthApplication.class, args);
+    SpringApplication.run(PriorauthApplication.class, args);
   }
 
   @Bean

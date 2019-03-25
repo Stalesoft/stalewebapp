@@ -1,6 +1,5 @@
 package com.mpqh.preauth.web.app.controller;
 
-import java.io.IOException;
 import java.util.List;
 
 import org.slf4j.Logger;
