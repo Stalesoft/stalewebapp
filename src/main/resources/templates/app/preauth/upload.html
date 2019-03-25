@@ -42,12 +42,21 @@
 	<div>
 		<section class="container">
 			<div class="row">
-				<div class="col-md-6 col-md-offset-4">
+				<!-- div class="col-md-6 col-md-offset-4"-->
+				<div class="">
 					 <form method="POST" th:action="@{/app/priorauth/codes}" enctype="multipart/form-data">
-				    	<input type="file" name="file" id="file"/> 
+					 	<div th:if="${param.error}">
+							<div class="alert alert-danger">Error Uploading File.</div>
+						</div>
+						<div class="">
+							<label for="file">Upload CSV File : </label>: 
+							<input type="file" name="file" id="file"/>
+						</div>
 					   <br/>
-				       <input type="submit" value="upload" name="upload" id="upload"/>
-					</form>
+					   <div class="">
+					   		<input class="" type="submit" value="upload" name="upload" id="upload" />
+						</div>
+				   </form>
 				</div>
 			</div>
 		</section>
